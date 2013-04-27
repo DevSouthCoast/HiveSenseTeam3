@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GadgeteerApp1", "GadgeteerApp1.csproj", "{2DB36A7C-938A-4B4E-8195-5AE086A6CC99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiveSense", "HiveSense.csproj", "{2DB36A7C-938A-4B4E-8195-5AE086A6CC99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
