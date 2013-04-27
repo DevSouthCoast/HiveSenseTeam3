@@ -70,8 +70,8 @@
           <moduleHasSocketUses Id="4adcb252-025f-43c9-aa1a-9ee488cb182a">
             <socketUse Id="e8c65831-6e12-49bb-a539-d12436a72c95" label="XY">
               <socket>
-                <socketUseReferencesSocket Id="7acff0e3-5626-4acd-89e9-022a04f2f437">
-                  <socketMoniker Id="17e78f6c-a320-49fb-8266-7d5e1084a4df" />
+                <socketUseReferencesSocket Id="bc980592-19e6-40a9-9ab1-ce5d9551a193">
+                  <socketMoniker Id="382c76b0-f6db-4a32-8e54-32bd335f1a7b" />
                 </socketUseReferencesSocket>
               </socket>
             </socketUse>
@@ -117,6 +117,21 @@
               <socket>
                 <socketUseReferencesSocket Id="0f64a946-a59c-4d22-bba2-dec65cca5dab">
                   <socketMoniker Id="1cd994bb-0757-4437-bdc3-4f5362160ba1" />
+                </socketUseReferencesSocket>
+              </socket>
+            </socketUse>
+          </moduleHasSocketUses>
+        </socketUses>
+      </module>
+    </gadgeteerModelHasGadgeteerHardware>
+    <gadgeteerModelHasGadgeteerHardware Id="810af489-12af-4fc8-9199-dc662b13fadc">
+      <module Id="e8b32515-8aae-4aea-bac6-adc348cb05dd" cachedDefinition="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ModuleDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; Name=&quot;Accelerometer&quot; Type=&quot;Gadgeteer.Modules.Seeed.Accelerometer&quot; HardwareVersion=&quot;1.0&quot; Image=&quot;C:\Program Files (x86)\Seeed\Seeed .NET Gadgeteer SDK\Modules\Accelerometer\Resources\Image.jpg&quot; BoardWidth=&quot;17.2&quot; BoardHeight=&quot;32.2&quot; MinimumGadgeteerCoreVersion=&quot;2.42.500&quot; HelpUrl=&quot;&quot; UniqueId=&quot;b791f67e-00cf-4eea-8bac-976ca40ed1be&quot; Manufacturer=&quot;Seeed&quot; Description=&quot;A Accelerometer module&quot; InstanceName=&quot;accelerometer&quot; ModuleSuppliesPower=&quot;false&quot;&gt;&#xD;&#xA;  &lt;ProvidedSockets /&gt;&#xD;&#xA;  &lt;Assemblies&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GTM.Seeed.Accelerometer&quot; /&gt;&#xD;&#xA;  &lt;/Assemblies&gt;&#xD;&#xA;  &lt;LibrariesProvided /&gt;&#xD;&#xA;  &lt;Sockets&gt;&#xD;&#xA;    &lt;Socket Orientation=&quot;90&quot; Left=&quot;8.6&quot; Top=&quot;27.7&quot; TypesLabel=&quot;I&quot; ConstructorOrder=&quot;1&quot; Optional=&quot;false&quot;&gt;&#xD;&#xA;      &lt;Types&gt;&#xD;&#xA;        &lt;Type&gt;I&lt;/Type&gt;&#xD;&#xA;      &lt;/Types&gt;&#xD;&#xA;      &lt;Pins&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;3&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;true&quot;&gt;8&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;true&quot;&gt;9&lt;/Pin&gt;&#xD;&#xA;      &lt;/Pins&gt;&#xD;&#xA;    &lt;/Socket&gt;&#xD;&#xA;  &lt;/Sockets&gt;&#xD;&#xA;  &lt;ExtraLibrariesRequired /&gt;&#xD;&#xA;&lt;/ModuleDefinition&gt;" name="accelerometer" moduleType="Gadgeteer.Modules.Seeed.Accelerometer" moduleDefinitionId="b791f67e-00cf-4eea-8bac-976ca40ed1be">
+        <socketUses>
+          <moduleHasSocketUses Id="7577336a-8983-4221-90cc-1bc26cce1dfd">
+            <socketUse Id="71ed9870-8eb0-47ce-8db5-5d0ce325f0d8" label="I">
+              <socket>
+                <socketUseReferencesSocket Id="4af8ca2b-9dcf-435b-9193-032f415b0638">
+                  <socketMoniker Id="97a8decc-199b-4eb6-b040-9ae5ac573131" />
                 </socketUseReferencesSocket>
               </socket>
             </socketUse>

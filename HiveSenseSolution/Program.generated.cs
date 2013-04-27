@@ -21,6 +21,7 @@ namespace GadgeteerApp1
         Gadgeteer.Modules.Seeed.TemperatureHumidity temperatureHumidity;
         Gadgeteer.Modules.GHIElectronics.Display_HD44780 char_Display;
         Gadgeteer.Modules.GHIElectronics.SDCard sdCard;
+        Gadgeteer.Modules.Seeed.Accelerometer accelerometer;
 
         public static void Main()
         {
@@ -38,11 +39,13 @@ namespace GadgeteerApp1
             // Initialize GTM.Modules and event handlers here.		
             usbClientDP = new GTM.GHIElectronics.UsbClientDP(1);
 		
-            button = new GTM.GHIElectronics.Button(4);
+            accelerometer = new GTM.Seeed.Accelerometer(3);
 		
             sdCard = new GTM.GHIElectronics.SDCard(5);
 		
             char_Display = new GTM.GHIElectronics.Display_HD44780(6);
+		
+            button = new GTM.GHIElectronics.Button(8);
 		
             temperatureHumidity = new GTM.Seeed.TemperatureHumidity(9);
 
