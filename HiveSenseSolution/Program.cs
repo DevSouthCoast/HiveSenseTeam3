@@ -44,13 +44,13 @@ namespace GadgeteerApp1
 
         public void InitialiseAccelerormeter()
         {
-            accelerometer.EnableThresholdDetection(3, false, true, false, true, false, true);
+            accelerometer.EnableThresholdDetection(3, false, true, false, false, false, true);
             accelerometer.ThresholdExceeded += new Accelerometer.ThresholdExceededEventHandler(accelerometer_ThresholdExceeded);
         }
 
         void accelerometer_ThresholdExceeded(Accelerometer sender)
         {
-            DisplayMessage("Help! I've fallen over!", string.Empty);
+            DisplayMessage("Help! Fallen!", string.Empty);
 
             _pauseTemprature = true;
         }
@@ -77,7 +77,7 @@ namespace GadgeteerApp1
             {
                 _pauseTempratureCount++;
 
-                if (_pauseTempratureCount >= 5)
+                if (_pauseTempratureCount >= 2)
                 {
                     _pauseTemprature = false;
                     _pauseTempratureCount = 0;
