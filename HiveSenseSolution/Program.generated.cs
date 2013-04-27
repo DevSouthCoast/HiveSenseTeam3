@@ -20,6 +20,7 @@ namespace GadgeteerApp1
         Gadgeteer.Modules.GHIElectronics.Button button;
         Gadgeteer.Modules.Seeed.TemperatureHumidity temperatureHumidity;
         Gadgeteer.Modules.GHIElectronics.Display_HD44780 char_Display;
+        Gadgeteer.Modules.GHIElectronics.SDCard sdCard;
 
         public static void Main()
         {
@@ -39,9 +40,11 @@ namespace GadgeteerApp1
 		
             button = new GTM.GHIElectronics.Button(4);
 		
-            temperatureHumidity = new GTM.Seeed.TemperatureHumidity(5);
+            sdCard = new GTM.GHIElectronics.SDCard(5);
 		
             char_Display = new GTM.GHIElectronics.Display_HD44780(6);
+		
+            temperatureHumidity = new GTM.Seeed.TemperatureHumidity(9);
 
         }
     }

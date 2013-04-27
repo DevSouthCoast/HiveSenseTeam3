@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading;
+using Data;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Presentation;
 using Microsoft.SPOT.Presentation.Controls;
@@ -15,10 +16,15 @@ using Gadgeteer.Modules.Seeed;
 
 namespace GadgeteerApp1
 {
+
+
     public partial class Program
     {
         GT.Timer _timer = new GT.Timer(1000);
-        int _numberTicks = 0; 
+        int _numberTicks = 0;
+
+        private TempAndHumidityAccess _tempAndHumidityAccess;
+
 
         // This method is run when the mainboard is powered up or reset.   
         void ProgramStarted()
@@ -36,6 +42,8 @@ namespace GadgeteerApp1
             // Use Debug.Print to show messages in Visual Studio's "Output" window during debugging.
             Debug.Print("Program Started");
 
+            _tempAndHumidityAccess = new TempAndHumidityAccess(sdCard, new DateTime(2013, 1, 1));
+
             button.ButtonPressed += Button_Method_Click;
 
             _timer.Tick += new GT.Timer.TickEventHandler(Timer_Tick);
@@ -48,6 +56,16 @@ namespace GadgeteerApp1
         {
             var str  = String.Concat("T:" , temperature.ToString("F2"), " H:", relativeHumidity.ToString("F2")); 
             var str2 = String.Concat( "Ts:" , _numberTicks.ToString());
+
+
+            TempAndHumidity tempAndHumidity = new TempAndHumidity()
+            {
+                TimeSpan = DateTime.Now.Ticks,
+                Temperature = temperature,
+                Humidity = relativeHumidity
+            };
+
+            _tempAndHumidityAccess.Log(tempAndHumidity);
 
             char_Display.Clear();
             char_Display.PrintString(str); 
@@ -67,7 +85,13 @@ namespace GadgeteerApp1
             _timer.Stop();
             _numberTicks = 0; 
             _timer.Start();
-            temperatureHumidity.StartContinuousMeasurements(); 
+            temperatureHumidity.StartContinuousMeasurements();
+
+            GT.StorageDevice storageDevice = sdCard.GetStorageDevice();
+
+            string[] directories = storageDevice.ListDirectories(@"\");
+
+
         }
   
         
