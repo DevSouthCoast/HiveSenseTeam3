@@ -17,5 +17,18 @@ namespace Data
 
             return value;
         }
+
+        public TempAndHumidity()
+        {
+        }
+
+        public TempAndHumidity(string csv)
+        {
+            string[] arr = csv.Split(',');
+
+            TimeSpan = long.Parse(arr[0]);
+            Temperature = double.Parse(arr[1]);
+            Humidity = double.Parse(arr[2]);  
+        }
     }
 }

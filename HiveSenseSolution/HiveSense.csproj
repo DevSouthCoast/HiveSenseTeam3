@@ -42,8 +42,11 @@
   <!-- Everything below here is custom to .NET MF / Gadgeteer template-->
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
+    <Compile Include="Cellular\CellularObject.cs" />
     <Compile Include="Data\TempAndHumidity.cs" />
     <Compile Include="Data\TempAndHumidityAccess.cs" />
+    <Compile Include="GpsFake.cs" />
+    <Compile Include="IGpsSensor.cs" />
     <Compile Include="Program.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -56,10 +59,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Wifi\Wifi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Gadgeteer">
       <SpecificVersion>false</SpecificVersion>
+    </Reference>
+    <Reference Include="Gadgeteer.Serial, Version=2.42.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Gadgeteer.WebClient, Version=2.42.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Gadgeteer.WebServer, Version=2.42.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="GHI.Premium.Net, Version=4.2.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="GHIElectronics.Gadgeteer.FEZSpider, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -76,7 +92,16 @@
     <Reference Include="GTM.GHIElectronics.UsbClientDP, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="GTM.GHIElectronics.WiFi_RS21, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="GTM.Seeed.Accelerometer, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="GTM.Seeed.CellularRadio, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="GTM.Seeed.GPS, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="GTM.Seeed.TemperatureHumidity, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -116,5 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SampleData\!Readme.txt" />
+    <Content Include="SampleData\2013-04-27.txt" />
   </ItemGroup>
 </Project>
