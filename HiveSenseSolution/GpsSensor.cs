@@ -10,6 +10,18 @@ namespace GadgeteerApp1
         public GpsSensor(GPS gps)
         {
             _gps = gps;
+
+            gps.PositionReceived += new GPS.PositionReceivedHandler(GPS_PositionReceived);
+        }
+
+        private void GPS_PositionReceived(GPS sender, GPS.Position position)
+        {
+            GPS.PositionReceivedHandler handler = OnGpsSyncReceived;
+
+            if (handler != null)
+            {
+                handler(sender, position);
+            }
         }
 
         public DateTime GetMeLastTime()
