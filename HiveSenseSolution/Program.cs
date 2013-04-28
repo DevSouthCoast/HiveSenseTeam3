@@ -36,15 +36,14 @@ namespace GadgeteerApp1
             button.ButtonPressed += Button_Method_Click;
             
             // Initially, wait till we have recieved a lock on the the GPS position before logging
-            _gpsSensor.OnGpsSyncReceived += new GPS.PositionReceivedHandler(GPS_PositionReceived);
-            _gpsSensor.Enable = true;
-
-            //gps.PositionReceived += new GPS.PositionReceivedHandler(GPS_PositionReceived);
-            //gps.Enabled = true;
+            //_gpsSensor.OnGpsSyncReceived += new GPS.PositionReceivedHandler(GPS_PositionReceived);
+            //_gpsSensor.Enable = true;
 
             char_Display.Clear();
             char_Display.PrintString("GPS Syncing...");
-           // BeginMonitoring();
+
+            gps.PositionReceived += new GPS.PositionReceivedHandler(GPS_PositionReceived);
+            gps.Enabled = true;
         }
 
         private void GPS_PositionReceived(GPS sender, GPS.Position position)
@@ -86,7 +85,7 @@ namespace GadgeteerApp1
         void accelerometer_ThresholdExceeded(Accelerometer sender)
         {
             DisplayMessage("Help! Fallen!", string.Empty);
-            //Panic("Help! Fallen");
+            Panic("Help! I've fallen over");
 
             _pauseTemprature = true;
         }
@@ -157,14 +156,4 @@ namespace GadgeteerApp1
             }
         }
     }
-
-    #region Redundant Code
-
-    //GPS.Position lastPosition = gps.LastPosition;
-    //_pauseTemprature = true;
-
-    //char_Display.Clear();
-    //char_Display.PrintString(lastPosition.FixTimeUtc.ToLocalTime().ToString("HH:mm:ss"));
-
-    #endregion
 }

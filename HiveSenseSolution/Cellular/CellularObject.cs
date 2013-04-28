@@ -8,10 +8,10 @@ namespace GadgeteerApp1.Cellular
     public class CellularObject
     {
         CellularRadio _cellularRadio;
-        bool _canSend = false;
         bool _isIntialised = false;
         bool _isInitialising = false;
         ArrayList _outgoingMessages = new ArrayList();
+        bool _coldStart = true;
 
         public CellularObject(CellularRadio celluarRadio)
         {
@@ -22,7 +22,7 @@ namespace GadgeteerApp1.Cellular
 
         void _cellularRadio_ModuleInitialized(CellularRadio sender)
         {
-            _canSend = true;
+            Debug.Print("Cellular ready...");
             _isInitialising = false;
             _isIntialised = true;
 
@@ -31,20 +31,25 @@ namespace GadgeteerApp1.Cellular
 
         private void StartSending()
         {
-            if (_canSend)
+            if (_isIntialised)
             {
-                foreach (string message in GetMessagesToSend())
-                    _cellularRadio.SendSms("APhoneNumber", message);
+                Debug.Print("Sending messages...");
 
+                foreach (string message in GetMessagesToSend())
+                    _cellularRadio.SendSms("!!!ANUMBER!!!", message);
+
+                Debug.Print("All messages sent...");
                 TurnOffCellular();
             }
         }
 
         private void TurnOffCellular()
         {
+            Debug.Print("Turning off cellular...");
             _cellularRadio.PowerOff();
             _isIntialised = false;
             _isInitialising = false;
+            Debug.Print("Cellular off...");
         }
 
         IEnumerable GetMessagesToSend()
@@ -61,8 +66,16 @@ namespace GadgeteerApp1.Cellular
 
         void InitialiseCelluar()
         {
+            Debug.Print("Starting cellular initialisation...");
             _isInitialising = true;
-            _cellularRadio.PowerOn(40);
+
+            if (_coldStart)
+            {
+                Debug.Print("This will take 60 seconds...");
+                _cellularRadio.PowerOn(60);
+            }
+            else
+                _cellularRadio.PowerOn();
         }
 
         public void SendSms(string message)
@@ -71,11 +84,6 @@ namespace GadgeteerApp1.Cellular
                 InitialiseCelluar();
 
             _outgoingMessages.Add(message);
-        }
-
-        public void RequestTheTime()
-        {
-            _cellularRadio.RetrieveClock();
         }
     }
 }
