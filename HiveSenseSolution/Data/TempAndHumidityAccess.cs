@@ -13,11 +13,17 @@ namespace Data
         private SDCard _sdCard;
         private string _fileName;
 
+        private int _dataCounter = 0;
+
+        private const int C_DATA_READ_COUNT = 10;
+
+        private long _beginSeekPosition = 0;
+
         public TempAndHumidityAccess(SDCard sdCard, DateTime date)
         {
             _sdCard = sdCard;
-            //_fileName = date.ToString("dd.mm.yyyy") + ".txt";
-            _fileName = "test.txt";
+            _fileName = date.ToString("dd.MM.yyyy") + ".txt";
+            //_fileName = "test.txt";
 
             // TODO: Check this later as not sure having this in the constructor is the best idea?
 
@@ -34,9 +40,32 @@ namespace Data
             //}
         }
 
-        public TempAndHumidity GetAll()
+        public TempAndHumidity[] GetAll()
         {
-            throw new NotImplementedException();
+            if (!IsSdCardReady())
+            {
+                return null;
+            }
+
+            StorageDevice storageDevice = _sdCard.GetStorageDevice();
+
+            TempAndHumidity[] returnArr = new TempAndHumidity[10];
+
+            using (FileStream fileStream = storageDevice.OpenRead(_fileName))
+            using (var fwd = new StreamReader(fileStream))
+            {
+                fwd.BaseStream.Seek(_beginSeekPosition, 0);
+                int i = 0; 
+                do
+                {
+                    var line = fwd.ReadLine();
+                    TempAndHumidity tempHumidity = new TempAndHumidity(line);
+                    returnArr[i] = tempHumidity;
+                    i++;
+                    Debug.Print(line); 
+                } while (fwd.EndOfStream == false);
+            }
+            return returnArr; 
         }
 
         public void Log(TempAndHumidity tempAndHumidity)
@@ -49,14 +78,28 @@ namespace Data
 
             StorageDevice storageDevice = _sdCard.GetStorageDevice();
 
-            FileStream fileStream = storageDevice.OpenWrite(_fileName);
 
-            byte[] data = GetBytes(tempAndHumidity.ToCsvString());
+            using (FileStream fileStream = storageDevice.OpenWrite(_fileName))
+            using (StreamWriter fwd = new StreamWriter(fileStream))
+            {
+                if (_dataCounter == 0)
+                {
+                    _beginSeekPosition = fileStream.Length;
+                }
+                fwd.BaseStream.Seek(fileStream.Length, 0);
+                fwd.WriteLine(tempAndHumidity.ToCsvString());
+                fwd.Flush();
 
-            fileStream.Write(data, 0, 0);
+                _dataCounter++;
+            }
 
-            fileStream.Close();
+            if (_dataCounter == 10)
+            {
+                _dataCounter = 0;
+                var arr = this.GetAll();
+            }
         }
+
 
         static byte[] GetBytes(string str)
         {
@@ -65,7 +108,7 @@ namespace Data
 
         private void CheckOutputFolderExists(DateTime dateTime)
         {
-            
+
         }
 
         private bool IsSdCardReady()
@@ -77,8 +120,5 @@ namespace Data
 
             return false;
         }
-
-
-
     }
 }

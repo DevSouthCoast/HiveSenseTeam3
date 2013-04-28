@@ -22,6 +22,7 @@ namespace GadgeteerApp1
         Gadgeteer.Modules.GHIElectronics.Display_HD44780 char_Display;
         Gadgeteer.Modules.GHIElectronics.SDCard sdCard;
         Gadgeteer.Modules.Seeed.Accelerometer accelerometer;
+        Gadgeteer.Modules.Seeed.GPS gps;
 
         public static void Main()
         {
@@ -48,6 +49,8 @@ namespace GadgeteerApp1
             button = new GTM.GHIElectronics.Button(8);
 		
             temperatureHumidity = new GTM.Seeed.TemperatureHumidity(9);
+		
+            gps = new GTM.Seeed.GPS(11);
 
         }
     }

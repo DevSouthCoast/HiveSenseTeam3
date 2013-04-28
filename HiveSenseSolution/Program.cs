@@ -24,6 +24,9 @@ namespace GadgeteerApp1
         bool _pauseTemprature = false;
         int _pauseTempratureCount = 0;
 
+        // Change the instance require here when debugging.
+        IGpsSensor _gpsSensor = new GpsFake();
+
         private TempAndHumidityAccess _tempAndHumidityAccess;
 
         // This method is run when the mainboard is powered up or reset.   
@@ -34,9 +37,33 @@ namespace GadgeteerApp1
             _tempAndHumidityAccess = new TempAndHumidityAccess(sdCard, new DateTime(2013, 1, 1));
 
             button.ButtonPressed += Button_Method_Click;
+            
+            // Initially, wait till we have recieved a lock on the the GPS position before logging
+            _gpsSensor.OnGpsSyncReceived += new GPS.PositionReceivedHandler(GPS_PositionReceived);
+            _gpsSensor.Enable = true;
 
+            //gps.PositionReceived += new GPS.PositionReceivedHandler(GPS_PositionReceived);
+            //gps.Enabled = true;
+
+            char_Display.Clear();
+            char_Display.PrintString("GPS Syncing...");
+           // BeginMonitoring();
+        }
+
+        private void GPS_PositionReceived(GPS sender, GPS.Position position)
+        {
+            // Unregister the position received event as we've now got a lock on
+            _gpsSensor.OnGpsSyncReceived -= new GPS.PositionReceivedHandler(GPS_PositionReceived);
+            //gps.PositionReceived -= new GPS.PositionReceivedHandler(GPS_PositionReceived);
+
+            BeginMonitoring();
+        }
+
+        public void BeginMonitoring()
+        {
             _timer.Tick += new GT.Timer.TickEventHandler(Timer_Tick);
             _timer.Start();
+
             temperatureHumidity.MeasurementComplete+=new TemperatureHumidity.MeasurementCompleteEventHandler(temperatureHumidity_MeasurementComplete);
             temperatureHumidity.StartContinuousMeasurements();
             InitialiseAccelerormeter();
@@ -50,6 +77,7 @@ namespace GadgeteerApp1
         void onWifiConnected(object sender, EventArgs e)
         {
             DisplayMessage("Connected to Wifi", String.Empty);
+
         }
 
         public void InitialiseAccelerormeter()
@@ -118,6 +146,18 @@ namespace GadgeteerApp1
             GT.StorageDevice storageDevice = sdCard.GetStorageDevice();
 
             string[] directories = storageDevice.ListDirectories(@"\");
+
+
         }
     }
+
+    #region Redundant Code
+
+    //GPS.Position lastPosition = gps.LastPosition;
+    //_pauseTemprature = true;
+
+    //char_Display.Clear();
+    //char_Display.PrintString(lastPosition.FixTimeUtc.ToLocalTime().ToString("HH:mm:ss"));
+
+    #endregion
 }
