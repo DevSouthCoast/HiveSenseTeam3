@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Data
+﻿namespace GadgeteerApp1.Data
 {
     public class TempAndHumidity
     {

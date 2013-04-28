@@ -46,6 +46,7 @@
     <Compile Include="Data\TempAndHumidity.cs" />
     <Compile Include="Data\TempAndHumidityAccess.cs" />
     <Compile Include="GpsFake.cs" />
+    <Compile Include="GpsSensor.cs" />
     <Compile Include="IGpsSensor.cs" />
     <Compile Include="Program.generated.cs">
       <AutoGen>True</AutoGen>

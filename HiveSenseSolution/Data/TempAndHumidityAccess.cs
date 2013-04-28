@@ -4,7 +4,7 @@ using Gadgeteer;
 using Gadgeteer.Modules.GHIElectronics;
 using Microsoft.SPOT;
 
-namespace Data
+namespace GadgeteerApp1.Data
 {
     public class TempAndHumidityAccess
     {

@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Threading;
-using Data;
+using GadgeteerApp1.Data;
 using Microsoft.SPOT;
-using Microsoft.SPOT.Presentation;
-using Microsoft.SPOT.Presentation.Controls;
-using Microsoft.SPOT.Presentation.Media;
-using Microsoft.SPOT.Touch;
-
-using Gadgeteer.Networking;
 using GT = Gadgeteer;
-using GTM = Gadgeteer.Modules;
 using Gadgeteer.Modules.GHIElectronics;
 using Gadgeteer.Modules.Seeed;
 using GadgeteerApp1.Cellular;
@@ -25,8 +16,7 @@ namespace GadgeteerApp1
         bool _pauseTemprature = false;
         int _pauseTempratureCount = 0;
 
-        // Change the instance require here when debugging.
-        IGpsSensor _gpsSensor = new GpsFake();
+        private IGpsSensor _gpsSensor;
 
         CellularObject _celluarObject;
 
@@ -36,6 +26,10 @@ namespace GadgeteerApp1
         void ProgramStarted()
         {
             Debug.Print("Program Started");
+
+            // Change the instance required here when debugging.
+            _gpsSensor = new GpsFake();
+            //_gpsSensor = new GpsSensor(gps);
 
             _tempAndHumidityAccess = new TempAndHumidityAccess(sdCard, new DateTime(2013, 1, 1));
 
