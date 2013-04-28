@@ -2,13 +2,17 @@
 @{
     ViewBag.Title = "HiveSense Monitoring";
 }
+
+
+
+
 <div class="container">
     <h1 style="color: #444; text-shadow: 3px 3px 4px #ffcc00;">
         HiveSense Monitoring</h1>
     <div class="well">
-        @Html.Partial("_Graph", new HiveSenseMonitoring.Graph("Temperature", "https://www.hostedgraphite.com/59f4ace5/graphite/render/?from=-2hours&until=now&width=500&height=300&target=alias(movingAverage(keepLastValue(test_metric.temp)%2C5)%2C%22Hive%20Temperature%22)&areaMode=all&bgcolor=000000&majorGridLineColor=FF9900&minorGridLineColor=FF9900&areaAlpha=&colorList=%23ffcc00&title=Hive%20Temperature&_uniq=0.21489952551200986", "temp"))
+        @Html.Partial("_Graph", new HiveSenseMonitoring.Graph("Temperature", "https://www.hostedgraphite.com/59f4ace5/graphite/render/?from=-2hours&target=test_metric.temp", "temp"))
        
-        @Html.Partial("_Graph", new HiveSenseMonitoring.Graph("Humidity", "https://www.hostedgraphite.com/59f4ace5/graphite/render/?from=-2hours&until=now&width=500&height=300&target=alias(movingAverage(keepLastValue(test_metric.humidity)%2C5)%2C%22Hive%20Humidity%22)&areaMode=all&bgcolor=000000&majorGridLineColor=FF9900&minorGridLineColor=FF9900&areaAlpha=&colorList=%23ffcc00&title=Hive%20Humidity&_uniq=0.21489952551200986", "temp"))
+        @Html.Partial("_Graph", new HiveSenseMonitoring.Graph("Humidity", "https://www.hostedgraphite.com/59f4ace5/graphite/render/?from=-2hours&target=test_metric.humidity", "temp"))
         
        
     </div>

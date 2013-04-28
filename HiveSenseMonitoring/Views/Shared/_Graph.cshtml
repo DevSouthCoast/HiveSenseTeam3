@@ -1,5 +1,28 @@
 ﻿@model HiveSenseMonitoring.Graph
 <div class="graph">
     <h3>@Model.Title</h3>
-    <img src="@Model.URL"/>
+    <div class="graphContainer" id="@Model.id" style="background: url('@(Model.URL)')">
+        <div class="extraInfo"></div>
+        <div id="@(Model.id)_thechart" style="width: 100%; height: 200px;">
+        </div>
+        <div id="@(Model.id)_theValue" class="headlineNumber"
+             style="position: absolute; left: 0; top:0; height: 200px; width: 100%; line-height: 150px;"></div>
+        <div id="@(Model.id)_loading" class="loading"><img src="@Url.Content("~/Content/themes/base/images/bee.gif")" style="height: 100px;">Loading...</div>
+    </div>
 </div>
+
+<script>
+
+    $(function () {
+
+        var container = '@Model.id';
+        var options = {id_scope: container, url: '@Html.Raw(Model.URL)' + "&format=json", chartOptions: { chart: { renderTo: '@(Model.id)_thechart'}} };
+
+        var chart = new ChartWidget(options);
+
+
+    })
+
+
+</script>
+
