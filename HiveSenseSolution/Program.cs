@@ -40,6 +40,16 @@ namespace GadgeteerApp1
             temperatureHumidity.MeasurementComplete+=new TemperatureHumidity.MeasurementCompleteEventHandler(temperatureHumidity_MeasurementComplete);
             temperatureHumidity.StartContinuousMeasurements();
             InitialiseAccelerormeter();
+
+
+            var wifi = new Wifi.Wifi();
+            wifi.RaiseWifiConnected += new EventHandler(onWifiConnected);
+
+        }
+
+        void onWifiConnected(object sender, EventArgs e)
+        {
+            DisplayMessage("Connected to Wifi", String.Empty);
         }
 
         public void InitialiseAccelerormeter()
