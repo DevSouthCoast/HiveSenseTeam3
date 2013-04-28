@@ -1,12 +1,11 @@
 ﻿@model HiveSenseMonitoring.Graph
 <div class="graph">
     <h3>@Model.Title</h3>
-    <div class="graphContainer" id="@Model.id" style="background: url('@(Model.URL)')">
-        <div class="extraInfo"></div>
-        <div id="@(Model.id)_thechart" style="width: 100%; height: 200px;">
-        </div>
-        <div id="@(Model.id)_theValue" class="headlineNumber"
-             style="position: absolute; left: 0; top:0; height: 200px; width: 100%; line-height: 150px;"></div>
+    <div class="graphContainer" id="@Model.id">
+        <img id="@(Model.id)_theimage"/>
+        
+        
+
         <div id="@(Model.id)_loading" class="loading"><img src="@Url.Content("~/Content/themes/base/images/bee.gif")" style="height: 100px;">Loading...</div>
     </div>
 </div>
@@ -16,9 +15,29 @@
     $(function () {
 
         var container = '@Model.id';
-        var options = {id_scope: container, url: '@Html.Raw(Model.URL)' + "&format=json", chartOptions: { chart: { renderTo: '@(Model.id)_thechart'}} };
 
-        var chart = new ChartWidget(options);
+
+
+        var image = $('#' + container + '_theimage');
+        var loading = $('#' + container + '_loading');
+
+
+
+
+        var hideLoading = function () {
+
+            loading.hide();
+
+            setTimeout(loadNew, 30000);
+        };
+
+        var loadNew = function () {
+            loading.show();
+            image.attr("src", '@Html.Raw(Model.URL)' + "&uniq=" + new Date());
+            }
+
+        image.bind('load', hideLoading);
+        loadNew();
 
 
     })
