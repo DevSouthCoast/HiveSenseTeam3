@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Gadgeteer;
 using Gadgeteer.Modules.GHIElectronics;
+using HiveSense;
 using Microsoft.SPOT;
 
 namespace GadgeteerApp1.Data
@@ -19,7 +20,11 @@ namespace GadgeteerApp1.Data
 
         private long _beginSeekPosition = 0;
 
-        public TempAndHumidityAccess(SDCard sdCard, DateTime date)
+        private Reporter _reporter;
+
+        GadgeteerApp1.Program _programMain; 
+
+        public TempAndHumidityAccess(SDCard sdCard, DateTime date, GadgeteerApp1.Program p)
         {
             _sdCard = sdCard;
             _fileName = date.ToString("dd.MM.yyyy") + ".txt";
@@ -38,6 +43,9 @@ namespace GadgeteerApp1.Data
             //{
             //    File.Create(LoggingFolder + _fileName);
             //}
+
+           
+            this._programMain = p; 
         }
 
         public TempAndHumidity[] GetAll()
@@ -97,6 +105,15 @@ namespace GadgeteerApp1.Data
             {
                 _dataCounter = 0;
                 var arr = this.GetAll();
+                if (_programMain.WifiWasConnected)
+                {
+                    if (_reporter == null)
+                    {
+                        this._reporter = new HiveSense.Reporter("18824523-d961-4f14-922c-6ea2783ffe31");
+                    }
+                    _reporter.ReportMetrics(arr, "hive1");
+                }
+
             }
         }
 

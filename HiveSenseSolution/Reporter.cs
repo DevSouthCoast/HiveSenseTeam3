@@ -48,7 +48,7 @@ namespace HiveSense
         private void SendMetric(string metric_prefix, string metric_type, double metric, DateTime dt)
         {
             String wireString = this.API_KEY + "." + metric_prefix + "." + metric_type + " " +
-                                metric.ToString("0.00");
+                                metric.ToString();
             if (dt != DateTime.MinValue)
             {
                 wireString += " " + ((int)GetTimeStamp(dt)).ToString();

@@ -1,6 +1,14 @@
 ﻿using System;
-using GadgeteerApp1.Data;
+using System.Collections;
+using System.Threading;
+using Data;
 using Microsoft.SPOT;
+using Microsoft.SPOT.Presentation;
+using Microsoft.SPOT.Presentation.Controls;
+using Microsoft.SPOT.Presentation.Media;
+using Microsoft.SPOT.Touch;
+
+using Gadgeteer.Networking;
 using GT = Gadgeteer;
 using Gadgeteer.Modules.GHIElectronics;
 using Gadgeteer.Modules.Seeed;
@@ -22,6 +30,12 @@ namespace GadgeteerApp1
 
         private TempAndHumidityAccess _tempAndHumidityAccess;
 
+
+
+        public bool WifiWasConnected { get; set; }
+
+
+
         // This method is run when the mainboard is powered up or reset.   
         void ProgramStarted()
         {
@@ -31,7 +45,7 @@ namespace GadgeteerApp1
             _gpsSensor = new GpsFake();
             //_gpsSensor = new GpsSensor(gps);
 
-            _tempAndHumidityAccess = new TempAndHumidityAccess(sdCard, new DateTime(2013, 1, 1));
+            _tempAndHumidityAccess = new TempAndHumidityAccess(sdCard, new DateTime(2013, 1, 1), this);
 
             button.ButtonPressed += Button_Method_Click;
             
@@ -65,16 +79,21 @@ namespace GadgeteerApp1
             InitialiseAccelerormeter();
 
 
-            var wifi = new Wifi.Wifi(wifi_RS21, "", "");
+           
             wifi.RaiseWifiConnected += new EventHandler(onWifiConnected);
+            wifi.InitialiseWifi();
 
         }
 
         void onWifiConnected(object sender, EventArgs e)
         {
             DisplayMessage("Connected to Wifi", String.Empty);
+            this.WifiWasConnected = true;
+            this.PulseDebugLED(); 
 
         }
+
+
 
         public void InitialiseAccelerormeter()
         {
