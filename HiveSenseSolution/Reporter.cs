@@ -11,6 +11,15 @@ namespace HiveSense
     public class Reporter
     {
 
+
+        public readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0); 
+
+        public double GetTimeStamp(DateTime dt)
+        {
+            TimeSpan span = (dt - epoch);
+            return span.Ticks / (double)TimeSpan.TicksPerSecond;
+        }
+
         public static UdpSocketClient client;
         private string API_KEY;
 
@@ -27,17 +36,24 @@ namespace HiveSense
             {
                 var metric = metrics[i];
                 var metric_type = "temp";
-                SendMetric(metric_prefix, "temp", metric.Temperature);
-                SendMetric(metric_prefix, "humidity", metric.Humidity);
+
+                // TODO  - Pass the actual date from the metric through
+                SendMetric(metric_prefix, "temp", metric.Temperature, DateTime.UtcNow);
+                SendMetric(metric_prefix, "humidity", metric.Humidity, DateTime.UtcNow);
             }
 
             return true;
         }
 
-        private void SendMetric(string metric_prefix, string metric_type, double metric)
+        private void SendMetric(string metric_prefix, string metric_type, double metric, DateTime dt)
         {
             String wireString = this.API_KEY + "." + metric_prefix + "." + metric_type + " " +
                                 metric.ToString("0.00");
+            if (dt != DateTime.MinValue)
+            {
+                wireString += " " + ((int)GetTimeStamp(dt)).ToString();
+            }
+
             var bytes = Encoding.UTF8.GetBytes(wireString);
             client.Send(bytes);
         }
