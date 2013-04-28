@@ -125,4 +125,8 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="SampleData\!Readme.txt" />
+    <Content Include="SampleData\2013-04-27.txt" />
+  </ItemGroup>
 </Project>
