@@ -43,9 +43,9 @@ namespace HiveSenseTest
             startDate = startDate.AddHours(-5);
             var metric = "temperature";
 
-            foreach (var value in this.GetData(600, 14, 20))
+            foreach (var value in this.GetData(1200, 23, 26))
             {
-                startDate = startDate.AddMinutes(1);
+                startDate = startDate.AddSeconds(30);
                 SendMetric(metric_prefix, "temp", value, startDate);
                 //SendMetric(metric_prefix, "humidity", metric.Humidity);
             }
@@ -54,7 +54,7 @@ namespace HiveSenseTest
             startDate = DateTime.UtcNow;
             startDate = startDate.AddHours(-5);
             
-            foreach (var value in this.GetData(600, 40, 60))
+            foreach (var value in this.GetData(1200, 32, 41))
             {
                 startDate = startDate.AddMinutes(1);
                 SendMetric(metric_prefix, "humidity", value, startDate);

@@ -66,6 +66,12 @@
     <Reference Include="Gadgeteer">
       <SpecificVersion>false</SpecificVersion>
     </Reference>
+<<<<<<< Updated upstream
+    <Reference Include="Gadgeteer.Serial, Version=2.42.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+=======
+>>>>>>> Stashed changes
     <Reference Include="Gadgeteer.WebClient, Version=2.42.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>

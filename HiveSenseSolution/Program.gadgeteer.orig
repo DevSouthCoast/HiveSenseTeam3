@@ -85,8 +85,8 @@
           <moduleHasSocketUses Id="5372ecec-be80-4dd3-ad7b-c603bcfe41b4">
             <socketUse Id="dfc826f0-79fc-4853-9fe8-4ca11b13a3ef" label="XY">
               <socket>
-                <socketUseReferencesSocket Id="2e2acad8-9f09-4c1b-9521-61dcee26b453">
-                  <socketMoniker Id="31ab7074-bd14-486c-a320-460fef726e58" />
+                <socketUseReferencesSocket Id="2456fd85-20c9-4fd1-ae48-3c7168c7fd14">
+                  <socketMoniker Id="b6465eb4-3b45-4ca7-8d9f-e5c46539ead8" />
                 </socketUseReferencesSocket>
               </socket>
             </socketUse>
@@ -139,19 +139,58 @@
         </socketUses>
       </module>
     </gadgeteerModelHasGadgeteerHardware>
+<<<<<<< Updated upstream
+    <gadgeteerModelHasGadgeteerHardware Id="fec5bfe7-a297-4d6c-ab09-633ea4e46737">
+      <module Id="1d9110d4-e2b6-4a7c-9478-1604aa501e1d" cachedDefinition="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ModuleDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; Name=&quot;GPS&quot; Type=&quot;Gadgeteer.Modules.Seeed.GPS&quot; HardwareVersion=&quot;1.0&quot; Image=&quot;C:\Program Files (x86)\Seeed\Seeed .NET Gadgeteer SDK\Modules\GPS\Resources\Image.jpg&quot; BoardWidth=&quot;27&quot; BoardHeight=&quot;32&quot; MinimumGadgeteerCoreVersion=&quot;2.42.500&quot; HelpUrl=&quot;&quot; UniqueId=&quot;58334096-dcc1-49d5-876c-28cbe5f87470&quot; Manufacturer=&quot;Seeed&quot; Description=&quot;A GPS module&quot; InstanceName=&quot;gps&quot; ModuleSuppliesPower=&quot;false&quot;&gt;&#xD;&#xA;  &lt;ProvidedSockets /&gt;&#xD;&#xA;  &lt;Assemblies&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GTM.Seeed.GPS&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;Gadgeteer.Serial&quot; /&gt;&#xD;&#xA;  &lt;/Assemblies&gt;&#xD;&#xA;  &lt;LibrariesProvided /&gt;&#xD;&#xA;  &lt;Sockets&gt;&#xD;&#xA;    &lt;Socket Orientation=&quot;90&quot; Left=&quot;13.5&quot; Top=&quot;27.5&quot; TypesLabel=&quot;U&quot; ConstructorOrder=&quot;1&quot; Optional=&quot;false&quot;&gt;&#xD;&#xA;      &lt;Types&gt;&#xD;&#xA;        &lt;Type&gt;U&lt;/Type&gt;&#xD;&#xA;      &lt;/Types&gt;&#xD;&#xA;      &lt;Pins&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;3&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;4&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;5&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;6&lt;/Pin&gt;&#xD;&#xA;      &lt;/Pins&gt;&#xD;&#xA;    &lt;/Socket&gt;&#xD;&#xA;  &lt;/Sockets&gt;&#xD;&#xA;  &lt;ExtraLibrariesRequired /&gt;&#xD;&#xA;&lt;/ModuleDefinition&gt;" name="gps" moduleType="Gadgeteer.Modules.Seeed.GPS" moduleDefinitionId="58334096-dcc1-49d5-876c-28cbe5f87470">
+        <socketUses>
+          <moduleHasSocketUses Id="b80f7c92-ef0a-4a75-9550-1b04711b6639">
+            <socketUse Id="d68147f6-569b-4687-9a9d-8774395ae794" label="U">
+              <socket>
+                <socketUseReferencesSocket Id="ff8f8206-4e53-484c-9cdf-46cbec0f061d">
+                  <socketMoniker Id="8edfd315-419d-47dd-bb12-0cd2b5a84af2" />
+                </socketUseReferencesSocket>
+              </socket>
+            </socketUse>
+          </moduleHasSocketUses>
+        </socketUses>
+      </module>
+    </gadgeteerModelHasGadgeteerHardware>
+    <gadgeteerModelHasGadgeteerHardware Id="c0dfc6f8-9468-4541-b3fc-c5759d118282">
+      <module Id="3facc22e-d95d-4063-8868-795daac45c7d" cachedDefinition="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ModuleDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; Name=&quot;CellularRadio&quot; Type=&quot;Gadgeteer.Modules.Seeed.CellularRadio&quot; HardwareVersion=&quot;1.0&quot; Image=&quot;C:\Program Files (x86)\Seeed\Seeed .NET Gadgeteer SDK\Modules\CellularRadio\Resources\Image.jpg&quot; BoardWidth=&quot;64&quot; BoardHeight=&quot;47&quot; MinimumGadgeteerCoreVersion=&quot;2.42.500&quot; HelpUrl=&quot;&quot; UniqueId=&quot;53c1477f-d53c-4fe2-af3c-6d8ab8c7e9fc&quot; Manufacturer=&quot;Seeed&quot; Description=&quot;A CellularRadio module&quot; InstanceName=&quot;cellularRadio&quot; ModuleSuppliesPower=&quot;false&quot;&gt;&#xD;&#xA;  &lt;ProvidedSockets /&gt;&#xD;&#xA;  &lt;Assemblies&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GTM.Seeed.CellularRadio&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;Gadgeteer.Serial&quot; /&gt;&#xD;&#xA;  &lt;/Assemblies&gt;&#xD;&#xA;  &lt;LibrariesProvided /&gt;&#xD;&#xA;  &lt;Sockets&gt;&#xD;&#xA;    &lt;Socket Orientation=&quot;90&quot; Left=&quot;47&quot; Top=&quot;42&quot; TypesLabel=&quot;K&quot; ConstructorOrder=&quot;1&quot; Optional=&quot;false&quot;&gt;&#xD;&#xA;      &lt;Types&gt;&#xD;&#xA;        &lt;Type&gt;K&lt;/Type&gt;&#xD;&#xA;      &lt;/Types&gt;&#xD;&#xA;      &lt;Pins&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;3&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;4&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;5&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;6&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;7&lt;/Pin&gt;&#xD;&#xA;      &lt;/Pins&gt;&#xD;&#xA;    &lt;/Socket&gt;&#xD;&#xA;  &lt;/Sockets&gt;&#xD;&#xA;  &lt;ExtraLibrariesRequired /&gt;&#xD;&#xA;&lt;/ModuleDefinition&gt;" name="cellularRadio" moduleType="Gadgeteer.Modules.Seeed.CellularRadio" moduleDefinitionId="53c1477f-d53c-4fe2-af3c-6d8ab8c7e9fc">
+        <socketUses>
+          <moduleHasSocketUses Id="e13fff88-9d7f-4e4a-8d59-ccb5fd743819">
+            <socketUse Id="0f819afb-b866-4578-bc7f-15b16e5ef607" label="K">
+              <socket>
+                <socketUseReferencesSocket Id="9d9ea0d0-3efc-48fb-9727-f3a4ce553a1b">
+                  <socketMoniker Id="17e78f6c-a320-49fb-8266-7d5e1084a4df" />
+                </socketUseReferencesSocket>
+              </socket>
+            </socketUse>
+          </moduleHasSocketUses>
+        </socketUses>
+      </module>
+    </gadgeteerModelHasGadgeteerHardware>
+    <gadgeteerModelHasGadgeteerHardware Id="8b697ab8-04b0-4208-a987-d0fc9f8e60e9">
+      <module Id="fea7e1c6-b533-48ff-8b59-91bb8c7175cb" cachedDefinition="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ModuleDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; Name=&quot;WiFi_RS21 (Premium)&quot; Type=&quot;Gadgeteer.Modules.GHIElectronics.WiFi_RS21&quot; HardwareVersion=&quot;1.0&quot; Image=&quot;C:\Program Files (x86)\GHI Electronics\GHI .NET Gadgeteer SDK\Modules\WiFi_RS21\Resources\Image.jpg&quot; BoardWidth=&quot;44&quot; BoardHeight=&quot;42&quot; MinimumGadgeteerCoreVersion=&quot;2.42.500&quot; HelpUrl=&quot;http://www.ghielectronics.com/catalog/product/282&quot; UniqueId=&quot;ba974123-53b3-4e73-846e-563b3a91df5f&quot; Manufacturer=&quot;GHI Electronics&quot; Description=&quot;A WiFi_RS21 module&quot; InstanceName=&quot;wifi_RS21&quot; ModuleSuppliesPower=&quot;false&quot;&gt;&#xD;&#xA;  &lt;ProvidedSockets /&gt;&#xD;&#xA;  &lt;Assemblies&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GTM.GHIElectronics.WiFi_RS21&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GHI.Premium.Net&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;Gadgeteer.WebClient&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;Gadgeteer.WebServer&quot; /&gt;&#xD;&#xA;  &lt;/Assemblies&gt;&#xD;&#xA;  &lt;LibrariesProvided /&gt;&#xD;&#xA;  &lt;Sockets&gt;&#xD;&#xA;    &lt;Socket Orientation=&quot;180&quot; Left=&quot;39.75&quot; Top=&quot;20.62&quot; TypesLabel=&quot;S&quot; ConstructorOrder=&quot;1&quot; Optional=&quot;false&quot;&gt;&#xD;&#xA;      &lt;Types&gt;&#xD;&#xA;        &lt;Type&gt;S&lt;/Type&gt;&#xD;&#xA;      &lt;/Types&gt;&#xD;&#xA;      &lt;Pins&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;3&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;4&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;5&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;6&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;7&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;8&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;9&lt;/Pin&gt;&#xD;&#xA;      &lt;/Pins&gt;&#xD;&#xA;    &lt;/Socket&gt;&#xD;&#xA;  &lt;/Sockets&gt;&#xD;&#xA;  &lt;ExtraLibrariesRequired&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GHI.Premium.Net&quot; ErrorMessage=&quot;A required library could not be found.&quot; /&gt;&#xD;&#xA;  &lt;/ExtraLibrariesRequired&gt;&#xD;&#xA;&lt;/ModuleDefinition&gt;" name="wifi_RS21" moduleType="Gadgeteer.Modules.GHIElectronics.WiFi_RS21" moduleDefinitionId="ba974123-53b3-4e73-846e-563b3a91df5f">
+        <socketUses>
+          <moduleHasSocketUses Id="388b5588-431f-4a61-8988-6452685b2aaf">
+            <socketUse Id="369aedad-3726-4fa3-a7fe-32ea8972141e" label="S">
+              <socket>
+                <socketUseReferencesSocket Id="0987d785-8ff9-4701-a2ea-e44926dcd395">
+                  <socketMoniker Id="31ab7074-bd14-486c-a320-460fef726e58" />
+                </socketUseReferencesSocket>
+              </socket>
+            </socketUse>
+=======
     <gadgeteerModelHasGadgeteerHardware Id="0cf4dc8c-d6c2-4c74-819e-3e279ff96d33">
       <module Id="a1951372-72ac-4a65-8464-9c798335b15e" cachedDefinition="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ModuleDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; Name=&quot;WiFi_RS21 (Premium)&quot; Type=&quot;Gadgeteer.Modules.GHIElectronics.WiFi_RS21&quot; HardwareVersion=&quot;1.0&quot; Image=&quot;C:\Program Files (x86)\GHI Electronics\GHI .NET Gadgeteer SDK\Modules\WiFi_RS21\Resources\Image.jpg&quot; BoardWidth=&quot;44&quot; BoardHeight=&quot;42&quot; MinimumGadgeteerCoreVersion=&quot;2.42.500&quot; HelpUrl=&quot;http://www.ghielectronics.com/catalog/product/282&quot; UniqueId=&quot;ba974123-53b3-4e73-846e-563b3a91df5f&quot; Manufacturer=&quot;GHI Electronics&quot; Description=&quot;A WiFi_RS21 module&quot; InstanceName=&quot;wifi_RS21&quot; ModuleSuppliesPower=&quot;false&quot;&gt;&#xD;&#xA;  &lt;ProvidedSockets /&gt;&#xD;&#xA;  &lt;Assemblies&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GTM.GHIElectronics.WiFi_RS21&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GHI.Premium.Net&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;Gadgeteer.WebClient&quot; /&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;Gadgeteer.WebServer&quot; /&gt;&#xD;&#xA;  &lt;/Assemblies&gt;&#xD;&#xA;  &lt;LibrariesProvided /&gt;&#xD;&#xA;  &lt;Sockets&gt;&#xD;&#xA;    &lt;Socket Orientation=&quot;180&quot; Left=&quot;39.75&quot; Top=&quot;20.62&quot; TypesLabel=&quot;S&quot; ConstructorOrder=&quot;1&quot; Optional=&quot;false&quot;&gt;&#xD;&#xA;      &lt;Types&gt;&#xD;&#xA;        &lt;Type&gt;S&lt;/Type&gt;&#xD;&#xA;      &lt;/Types&gt;&#xD;&#xA;      &lt;Pins&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;3&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;4&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;5&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;6&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;7&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;8&lt;/Pin&gt;&#xD;&#xA;        &lt;Pin Shared=&quot;false&quot;&gt;9&lt;/Pin&gt;&#xD;&#xA;      &lt;/Pins&gt;&#xD;&#xA;    &lt;/Socket&gt;&#xD;&#xA;  &lt;/Sockets&gt;&#xD;&#xA;  &lt;ExtraLibrariesRequired&gt;&#xD;&#xA;    &lt;Assembly MFVersion=&quot;4.2&quot; Name=&quot;GHI.Premium.Net&quot; ErrorMessage=&quot;A required library could not be found.&quot; /&gt;&#xD;&#xA;  &lt;/ExtraLibrariesRequired&gt;&#xD;&#xA;&lt;/ModuleDefinition&gt;" name="wifi_RS21" moduleType="Gadgeteer.Modules.GHIElectronics.WiFi_RS21" moduleDefinitionId="ba974123-53b3-4e73-846e-563b3a91df5f">
         <socketUses>
           <moduleHasSocketUses Id="d8294ffb-424a-4bce-9c94-3a7b3a6b6c5d">
             <socketUse Id="9ce56108-e35b-4322-8975-19df821ceb9a" label="S" />
+>>>>>>> Stashed changes
           </moduleHasSocketUses>
         </socketUses>
       </module>
     </gadgeteerModelHasGadgeteerHardware>
   </gadgeteerHardware>
-  <comments>
-    <gadgeteerModelHasComments Id="f8369d61-1432-4f78-936f-77406a561962">
-      <comment Id="a80696ad-951b-49ae-8626-7b867d363e35" text="Tip: To have the designer connect all modules for you, right-click the diagram, and then click 'Connect all modules'." />
-    </gadgeteerModelHasComments>
-  </comments>
 </gadgeteerModel>
