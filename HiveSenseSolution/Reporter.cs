@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using Data;
+using GadgeteerApp1.Data;
 
 
 namespace HiveSense

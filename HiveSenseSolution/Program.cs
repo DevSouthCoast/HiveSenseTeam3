@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading;
-using Data;
+using GadgeteerApp1.Data;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Presentation;
 using Microsoft.SPOT.Presentation.Controls;
@@ -79,7 +79,7 @@ namespace GadgeteerApp1
             InitialiseAccelerormeter();
 
 
-           
+            var wifi = new Wifi.Wifi(wifi_RS21, "", "");
             wifi.RaiseWifiConnected += new EventHandler(onWifiConnected);
             wifi.InitialiseWifi();
 
