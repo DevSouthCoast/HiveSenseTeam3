@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading;
+using Data;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Presentation;
 using Microsoft.SPOT.Presentation.Controls;
@@ -18,58 +19,95 @@ namespace GadgeteerApp1
     public partial class Program
     {
         GT.Timer _timer = new GT.Timer(1000);
-        int _numberTicks = 0; 
+        int _numberTicks = 0;
+
+        bool _pauseTemprature = false;
+        int _pauseTempratureCount = 0;
+
+        private TempAndHumidityAccess _tempAndHumidityAccess;
 
         // This method is run when the mainboard is powered up or reset.   
         void ProgramStarted()
         {
-            /*******************************************************************************************
-            Modules added in the Program.gadgeteer designer view are used by typing 
-            their name followed by a period, e.g.  button.  or  camera.
-            Many modules generate useful events. Type +=<tab><tab> to add a handler to an event, e.g.:
-                button.ButtonPressed +=<tab><tab>
-            If you want to do something periodically, use a GT.Timer and handle its Tick event, e.g.:
-                GT.Timer timer = new GT.Timer(1000); // every second (1000ms)
-                timer.Tick +=<tab><tab>
-                timer.Start();
-            *******************************************************************************************/
-            // Use Debug.Print to show messages in Visual Studio's "Output" window during debugging.
             Debug.Print("Program Started");
+
+            _tempAndHumidityAccess = new TempAndHumidityAccess(sdCard, new DateTime(2013, 1, 1));
 
             button.ButtonPressed += Button_Method_Click;
 
             _timer.Tick += new GT.Timer.TickEventHandler(Timer_Tick);
             _timer.Start();
             temperatureHumidity.MeasurementComplete+=new TemperatureHumidity.MeasurementCompleteEventHandler(temperatureHumidity_MeasurementComplete);
-            temperatureHumidity.StartContinuousMeasurements(); 
+            temperatureHumidity.StartContinuousMeasurements();
+            InitialiseAccelerormeter();
         }
-  
+
+        public void InitialiseAccelerormeter()
+        {
+            accelerometer.EnableThresholdDetection(3, false, true, false, false, false, true);
+            accelerometer.ThresholdExceeded += new Accelerometer.ThresholdExceededEventHandler(accelerometer_ThresholdExceeded);
+        }
+
+        void accelerometer_ThresholdExceeded(Accelerometer sender)
+        {
+            DisplayMessage("Help! Fallen!", string.Empty);
+
+            _pauseTemprature = true;
+        }
+
         private void temperatureHumidity_MeasurementComplete(TemperatureHumidity sender, double temperature, double relativeHumidity)
         {
             var str  = String.Concat("T:" , temperature.ToString("F2"), " H:", relativeHumidity.ToString("F2")); 
             var str2 = String.Concat( "Ts:" , _numberTicks.ToString());
 
+            TempAndHumidity tempAndHumidity = new TempAndHumidity()
+            {
+                TimeSpan = DateTime.Now.Ticks,
+                Temperature = temperature,
+                Humidity = relativeHumidity
+            };
+
+            _tempAndHumidityAccess.Log(tempAndHumidity);
+
+            if (!_pauseTemprature)
+            {
+                DisplayMessage(str, str2);
+            }
+            else
+            {
+                _pauseTempratureCount++;
+
+                if (_pauseTempratureCount >= 2)
+                {
+                    _pauseTemprature = false;
+                    _pauseTempratureCount = 0;
+                }
+            }
+        }
+
+        void DisplayMessage(string line1, string line2)
+        {
             char_Display.Clear();
-            char_Display.PrintString(str); 
+            char_Display.PrintString(line1);
             char_Display.SetCursor(1, 0);
-            char_Display.PrintString( str2);
+            char_Display.PrintString(line2);
         }
 
         void Timer_Tick(GT.Timer timer)
         {
             _numberTicks++; 
         }
- 
-
-  
+   
         private void Button_Method_Click(Button sender, Button.ButtonState state)
         {
             _timer.Stop();
             _numberTicks = 0; 
             _timer.Start();
-            temperatureHumidity.StartContinuousMeasurements(); 
+            temperatureHumidity.StartContinuousMeasurements();
+
+            GT.StorageDevice storageDevice = sdCard.GetStorageDevice();
+
+            string[] directories = storageDevice.ListDirectories(@"\");
         }
-  
-        
     }
 }
