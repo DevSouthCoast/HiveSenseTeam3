@@ -23,6 +23,8 @@ namespace GadgeteerApp1
         Gadgeteer.Modules.GHIElectronics.SDCard sdCard;
         Gadgeteer.Modules.Seeed.Accelerometer accelerometer;
         Gadgeteer.Modules.Seeed.GPS gps;
+        Gadgeteer.Modules.Seeed.CellularRadio cellularRadio;
+        Gadgeteer.Modules.GHIElectronics.WiFi_RS21 wifi_RS21;
 
         public static void Main()
         {
@@ -42,15 +44,19 @@ namespace GadgeteerApp1
 		
             accelerometer = new GTM.Seeed.Accelerometer(3);
 		
+            cellularRadio = new GTM.Seeed.CellularRadio(4);
+		
             sdCard = new GTM.GHIElectronics.SDCard(5);
 		
             char_Display = new GTM.GHIElectronics.Display_HD44780(6);
 		
             button = new GTM.GHIElectronics.Button(8);
 		
-            temperatureHumidity = new GTM.Seeed.TemperatureHumidity(9);
+            wifi_RS21 = new GTM.GHIElectronics.WiFi_RS21(9);
 		
             gps = new GTM.Seeed.GPS(11);
+		
+            temperatureHumidity = new GTM.Seeed.TemperatureHumidity(12);
 
         }
     }

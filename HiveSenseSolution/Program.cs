@@ -13,6 +13,7 @@ using GT = Gadgeteer;
 using GTM = Gadgeteer.Modules;
 using Gadgeteer.Modules.GHIElectronics;
 using Gadgeteer.Modules.Seeed;
+using GadgeteerApp1.Cellular;
 
 namespace GadgeteerApp1
 {
@@ -26,6 +27,8 @@ namespace GadgeteerApp1
 
         // Change the instance require here when debugging.
         IGpsSensor _gpsSensor = new GpsFake();
+
+        CellularObject _celluarObject;
 
         private TempAndHumidityAccess _tempAndHumidityAccess;
 
@@ -89,6 +92,7 @@ namespace GadgeteerApp1
         void accelerometer_ThresholdExceeded(Accelerometer sender)
         {
             DisplayMessage("Help! Fallen!", string.Empty);
+            //Panic("Help! Fallen");
 
             _pauseTemprature = true;
         }
@@ -146,8 +150,17 @@ namespace GadgeteerApp1
             GT.StorageDevice storageDevice = sdCard.GetStorageDevice();
 
             string[] directories = storageDevice.ListDirectories(@"\");
+        }
 
+        void Panic(string message)
+        {
+            if (message != null && !message.Equals(string.Empty))
+            {
+                if (_celluarObject == null)
+                    _celluarObject = new CellularObject(cellularRadio);
 
+                _celluarObject.SendSms(message);
+            }
         }
     }
 
