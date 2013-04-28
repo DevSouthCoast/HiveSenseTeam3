@@ -42,7 +42,7 @@ namespace GadgeteerApp1
             InitialiseAccelerormeter();
 
 
-            var wifi = new Wifi.Wifi();
+            var wifi = new Wifi.Wifi(wifi_RS21, "", "");
             wifi.RaiseWifiConnected += new EventHandler(onWifiConnected);
 
         }
